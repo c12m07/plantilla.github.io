@@ -1,0 +1,326 @@
+$color-0: #573D2B;
+$color-1: #734A32;
+$color-2: #A67C58;
+$color-3: #C29F74;
+$color-4: #d7c6b252;
+
+@mixin borders($bColor){
+    border: 1px solid $bColor;
+    box-shadow: 0px 0px 10px white;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: $color-4;
+}
+
+#bod{
+    width: 90%;
+    margin: 35px auto;
+    background-color: white;
+    @include borders(white);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+#header{
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+    h1{
+        flex-grow: 1;
+        flex-basis: 65%;
+        margin: 30px 20px;
+        font-style: italic;
+        font-weight: 900;
+        color: $color-2;
+        text-shadow: 0px 1px 1px $color-0, 1px 2px 1px $color-0, 2px 3px 1px $color-0;
+        letter-spacing: 3px;
+    }
+
+    #menu{
+        flex-grow: 1;
+        margin: 10px 25px;
+        display: inline-flex;
+
+        ul{
+            display: flex;
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            list-style: none;
+            align-items: center;
+
+            li{
+                padding: 0px 10px;
+
+                a{
+                    text-decoration: none;
+                    color: $color-0;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                }
+
+                a:hover{
+                    transform: scale(1.2, 1.2);
+                    color: $color-2;
+                }
+            }
+        }
+    }
+}
+
+#main{
+    display: flex;
+    justify-content: space-between;
+
+    #aside{
+        flex-basis:16%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 1% 0px;
+        padding: 1%;
+        flex-grow: 1;
+
+        .title{
+            @include borders($color-4);
+            border-left: 0px;
+            border-right: 0px;
+
+            h3{
+                display: block;
+                font-size: 15px;
+                text-align: center;
+                padding: 10px 0px;
+            }
+        }
+
+        ul{
+            list-style: none;
+
+            li{
+                display: block;
+                margin: 10% 0px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+
+                a{
+                    display: block;
+                    text-decoration: none;
+                    color: $color-0;
+                    transition: all 500ms;
+                    font-weight: bold;
+                    background-color: $color-3;
+                }
+
+                a:hover{
+                    background-color: #573D2B;
+                    color:#ccc;
+                    border-radius: 7px;
+                }
+
+            }
+        }
+    }
+
+    #principal{
+        display: inline-flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        flex-basis: 82%;
+        margin: 1% 0px;
+        padding: 1% 0px;
+        flex-grow: 1;
+
+        .box{
+            @include borders($color-4);
+            flex-grow: 1;
+            flex-basis: 200px;
+            overflow: hidden;
+            margin: 0px 1% 2%;
+            transition: all 500ms;
+            border-radius: 5px;
+
+            a{
+                text-decoration: none !important;
+
+                img{
+                    width: 100%;
+                }
+                
+                div{
+                    color: gray;
+                    font-size: 15px;
+                    padding: 10px;
+                    transition: all 300ms;
+                }
+            }
+        }
+
+        .box:hover{
+            background-color: $color-2;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px $color-2;
+
+            div{
+                color: whitesmoke;
+                padding-left: 30px;
+            }
+        }
+    }
+}
+
+#footer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100px;  
+
+    #title{
+        flex-grow: 1;
+        flex-basis: auto;
+        padding-left: 30px;
+
+        h2{
+            font-style: italic;
+            font-size: 30px;
+            color: gray;
+        }
+    }
+    
+    #copy{
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        p{
+            display: inline;
+            padding-right: 25px;
+        }
+    }
+}
+
+@media (max-width:900px){
+    #bod{
+        margin: 0px;
+        width: 100%;
+        #header{
+            flex-direction: column;
+            h1{
+                flex-basis: 100%;
+                text-align: center;
+            }
+
+            #menu{
+                flex-basis: 100%;
+                ul{
+                    justify-content: space-around;
+                }
+            }
+        }
+
+        #main{
+            flex-direction: column;
+            flex-grow: 1;
+            padding:5%;
+            #aside{
+                display: flex;
+                flex-basis: 60%;
+
+                #title{
+                    width: 50%;
+                    margin: 0px auto;                
+                }
+
+                ul{
+                    margin-top: 25px;
+                    display: flex;
+                    flex-grow: 1;
+                    li{
+                        margin: 0px 1%;
+                        width: 40%;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@media (max-width:500px){
+
+    #header{
+        h1{
+            font-size: 40px;
+        }
+    }
+
+    #menu{
+        flex-basis: 100%;
+        margin: 0px;
+
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            
+            li{
+                padding: 20px !important;
+                flex-basis: 25%;
+                text-align: center;
+            }
+        }
+    }
+
+    #main{
+        #aside{
+            ul{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                li{
+                    display: block;
+                    width:70% !important;
+                    margin-bottom: 2% !important;
+                }
+
+                a:hover{
+                    border-radius: 0px !important;
+                }
+            }
+        }
+
+        #principal {
+            padding: 5%;
+
+            .box{
+                flex-basis: 70%;
+                margin-bottom: 10%;
+            }
+        }
+    }
+
+    #footer{
+        #title{
+            display: block;
+            text-align: center;
+            padding-left: 0px !important;
+        }
+        #copy{
+            display: block;
+            text-align: center;
+            padding-left: 35px;   
+        }
+    }
+}
